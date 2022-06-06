@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>Used Cars Prediction</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="static/styles/stylesheet1.css">
+        
+        <style type="text/css">
+        .d-none{
+        position:relative;
+        left: 25%;
+        display: none;
+        }
+        </style>
+	    
+</head>
+
+    <body>
+        <!-- loader  -->
+      <div class="loader_bg">
+        <div class="loader"><img src="static/loading-opaque.gif" alt="#" /></div>
+        </div>
+        <!-- end loader -->
+
+        <div class="bg"></div>
+        <section class="price-pred">  
+
+        <figure class="img_con"><img class="left_img" src="static/img.jpeg" alt="#"></figure>
+
+        <div class="container">  
+            <div class="form">
+                
+            <form action="/predict" method="POST" class="pred-form" id="pred-form">
+
+                <div class="SelectBox"><select id="brand" name="brand" onchange="enableModel(this)" required >
+                    <option value="" >Select Car Brand</option>
+                    <option value='Hyundai'>Hyundai</option>
+                    <option value='Fiat'>Fiat</option>
+                    <option value='Chevrolet'>Chevrolet</option>
+                    </select></div>
+
+
+                    <div class="SelectBox" ><select id="model_h" class="d-none" name="model"  >
+                        <option value="">Select Hyundai Model</option>
+                        <option value='Elantra'>Elantra</option>
+                        <option value='Verna'>Verna</option>
+                        <option value='Excel'>Excel</option>
+                        <option value='Accent'>Accent</option>
+                        <option value='Avante'>Avante</option>
+                        <option value='I10'>iTen</option>
+                        <option value='Matrix'>Matrix</option>
+                        <option value='Tucson'>Tucson</option>  
+                    </select>
+                        
+                    <select id="model_f" class="d-none" name="model1"  >
+                        <option value="">Select Fiat Model</option>
+                        <option value='128'>128</option>
+                        <option value='131'>131</option>
+                        <option value='Shahin'>Shahin</option>
+                        <option value='Punto'>Punto</option>
+                        <option value='Uno'>Uno</option>
+                        <option value='Tipo'>Tipo</option>
+                    </select>
+
+                    <select id="model_ch" class="d-none" name="model2"  >
+                        <option value="">Select Chevrolet Model</option>
+                        <option value='Aveo'>Aveo</option>
+                        <option value='Cruze'>Cruze</option>
+                        <option value='Lanos'>Lanos</option>
+                        <option value='Optra'>Optra</option>
+                    </select>
+
+
+                <div class="SelectBox"><select id="body" name="body" required >
+                    <option value="">Select Car Body</option>
+                    <option value='Sedan'>Sedan</option>
+                    <option value='Hatchback'>Hatchback</option>
+                    <option value='SUV'>SUV</option></select>
+                    </div>
+
+                <div class="form-group"><input type="number" max="2022" min="1950" name="year" placeholder="Enter Car Year" required></div>
+
+                <div class="SelectBox"><select id="Color" name="Color" required >
+                    <option value="">Select Color</option>
+                    <option value='White'>White</option>
+                    <option value='Black'>Black</option>
+                    <option value='Silver'>Silver</option>
+                    <option value='Gray'>Gray</option>
+                    <option value='Red'>Red</option>
+                    <option value='Blue- Navy Blue'>Blue- Navy Blue</option>
+                    <option value='Other Color'>Other Color</option>
+                    <option value='Burgundy'>Burgundy</option>
+                    <option value='Green'>Green</option>
+                    <option value='Gold'>Gold</option>
+                    <option value='Beige'>Beige</option>
+                    <option value='Brown'>Brown</option>
+                    <option value='Yellow'>Yellow</option>
+                    <option value='Orange'>Orange</option></select>
+                    </div>
+
+                <div class="SelectBox"><select id="engine" name="engine" required >
+                    <option value="">Select Engine Size</option>
+                    <option value='1600 CC'>1600 CC</option>
+                    <option value='1000 - 1300 CC'>1000 - 1300 CC</option>
+                    <option value='1400 - 1500 CC'>1400 - 1500 CC</option>
+                    <option value='1800 - 2000 CC'>1800 - 2000 CC</option>
+                    <option value='2200 - 2800 CC'>2200 - 2800 CC</option>
+                    <option value='More than 3000 CC'>More than 3000 CC</option></select>
+                    </div>
+
+                
+
+                <div class="SelectBox"><select id="Kilometers" name="Kilometers" required >
+                    <option value="">Select Kilometers</option>
+                    <option value='0 to 9999'>0 to 9999</option>
+                    <option value='10000 to 19999'>10000 to 19999</option>
+                    <option value='20000 to 29999'>20000 to 29999</option>
+                    <option value='30000 to 39999'>30000 to 39999</option>
+                    <option value='40000 to 49999'>40000 to 49999</option>
+                    <option value='50000 to 59999'>50000 to 59999</option>
+                    <option value='60000 to 69999'>60000 to 69999</option>
+                    <option value='70000 to 79999'>70000 to 79999</option>
+                    <option value='80000 to 89999'>80000 to 89999</option>
+                    <option value='90000 to 99999'>90000 to 99999</option>
+                    <option value='100000 to 119999'>100000 to 119999</option>
+                    <option value='120000 to 139999'>120000 to 139999</option>
+                    <option value='140000 to 159999'>140000 to 159999</option>
+                    <option value='160000 to 179999'>160000 to 179999</option>
+                    <option value='180000 to 199999'>180000 to 199999</option>
+                    <option value='More than 200000'>More than 200000</option>
+                </select>
+                    </div>
+
+
+                 
+                    <div class="SelectBox"><select id="Governament" name="Governament" required >
+                        <option value="">Select Car Governament</option>
+                        <option value='Alexandria'>Alexandria</option>
+                        <option value='Aswan'>Aswan</option>
+                        <option value='Asyut'>Asyut</option>
+                        <option value='Beheira'>Beheira</option>
+                        <option value='Beni Suef'>Beni Suef</option>
+                        <option value='Cairo'>Cairo</option>
+                        <option value='Dakahlia'>Dakahlia</option>
+                        <option value='Damietta'>Damietta</option>
+                        <option value='Fayoum'>Fayoum</option>
+                        <option value='Gharbia'>Gharbia</option>
+                        <option value='Giza'>Giza</option>
+                        <option value='Ismailia'>Ismailia</option>
+                        <option value='Kafr al-Sheikh'>Kafr al-Sheikh</option>
+                        <option value='Luxor'>Luxor</option>
+                        <option value='Matruh'>Matruh</option>
+                        <option value='Minya'>Minya</option>
+                        <option value='Monufia'>Monufia</option>
+                        <option value='New Valley'>New Valley</option>
+                        <option value='Port Said'>Port Said</option>
+                        <option value='Qalyubia'>Qalyubia</option>
+                        <option value='Qena'>Qena</option>
+                        <option value='Red Sea'>Red Sea</option>
+                        <option value='Sharqia'>Sharqia</option>
+                        <option value='Sohag'>Sohag</option>
+                        <option value='South Sinai'>South Sinai</option>
+                        <option value='Suez'>Suez</option></select>
+                        </div>    
+
+                <div class="rad_">
+                    <input type="radio" name="radio" id="Automatic"  required>
+                    <label for="Automatic" >Automatic</label>
+                    <input type="radio" name="radio" id="Manual" required>
+                    <label for="Manual" >Manual</label>
+                </div> 
+
+                <div class="rad_">
+                    <input type="radio" name="radio1" id="Benzine"  required>
+                    <label for="Benzine" >Benzine</label>
+                    <input type="radio" name="radio1" id="Natural Gas" required>
+                    <label for="Natural Gas" >Natural Gas</label>
+                </div>
+        
+            
+
+              
+                
+                <div class="form-button" >
+                    <input type="submit" value="Predict">
+                </div>
+                <div class="out">
+                    <p class="output" id="output1">{{price}}</p>
+                </div>
+
+            </form>
+            </div>
+             
+        </div>
+ 
+        </section>
+
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/custom.js"></script>
+    
+    <script type="text/javascript">
+        function enableModel(answer){
+            console.log(answer.value);
+            if(answer.value == 'Hyundai' ){
+                document.getElementById('model_h').classList.remove('d-none');
+                document.getElementById('model_f').classList.add('d-none');
+                document.getElementById('model_ch').classList.add('d-none');  
+                document.getElementById('model_bmw').classList.add('d-none');
+                document.getElementById('model_mrc').classList.add('d-none');
+
+
+            }
+
+            else if(answer.value == 'Fiat'){
+            document.getElementById('model_f').classList.remove('d-none');
+            document.getElementById('model_h').classList.add('d-none');
+            document.getElementById('model_ch').classList.add('d-none');
+            document.getElementById('model_bmw').classList.add('d-none');
+            document.getElementById('model_mrc').classList.add('d-none');
+        }
+
+            else if(answer.value == 'Chevrolet'){
+            document.getElementById('model_ch').classList.remove('d-none');
+            document.getElementById('model_f').classList.add('d-none');
+            document.getElementById('model_h').classList.add('d-none');
+            document.getElementById('model_bmw').classList.add('d-none');
+            document.getElementById('model_mrc').classList.add('d-none');
+        }
+
+
+        
+            else{
+            document.getElementById('model_h').classList.add('d-none');
+            document.getElementById('model_f').classList.add('d-none');
+            document.getElementById('model_ch').classList.add('d-none');
+        }};
+    </script>
+
+    </body>

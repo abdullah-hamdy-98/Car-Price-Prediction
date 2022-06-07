@@ -9,12 +9,11 @@ Table of content
 - **Finally**
 
 
-------------
 Introduction
 ---------------	
 I built this web service to simplify the process of buying and selling used cars in Egypt by predict car price based on some input from the user and the current market price.
 
----------------
+
 
 Technologies & Toolkits
 ---------------
@@ -33,7 +32,7 @@ Technologies & Toolkits
     - Model Saving { Joblib }
     - Backend { Flask }
 
---------------------
+
 
 Content
 --------
@@ -45,7 +44,7 @@ This data contains +14K cars includes 5692 Hyundai, 5033 Fiat and 4016 Chevrolet
 The value of a car drops right from the moment it is bought and the depreciation continues with each passing year.
 The make and model of a car, total kilometers driven and various other factors further affect the car’s resale value.
 
---------------
+
 
 Finally
 ------
